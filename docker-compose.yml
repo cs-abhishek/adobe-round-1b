@@ -1,12 +1,98 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  # Adobe Hackathon Round 1B - Document Intelligence System
   document-intelligence:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+    container_name: adobe-hackathon-round1b
     volumes:
-      - ./app/input:/app/input
-      - ./app/output:/app/output
-      - ./app/persona.json:/app/persona.json
+      # Mount input/output directories
+      - ./app/input:/app/input:ro # Read-only input
+      - ./app/output:/app/output:rw # Read-write output
+      - ./app/persona.json:/app/persona.json:ro
+      # Mount model cache for persistence
+      - model-cache:/app/models
+      # Mount logs for debugging
+      - ./logs:/app/logs:rw
     environment:
+      # Python optimization
       - PYTHONUNBUFFERED=1
-    command: python main.py
+      - PYTHONPATH=/app
+      # Offline operation settings
+      - TRANSFORMERS_OFFLINE=1
+      - HF_DATASETS_OFFLINE=1
+      - TORCH_HOME=/app/models
+      - TRANSFORMERS_CACHE=/app/models
+      # Performance settings
+      - OMP_NUM_THREADS=4
+      - MKL_NUM_THREADS=4
+      # Hackathon metadata
+      - HACKATHON_ROUND=1B
+      - MAX_PROCESSING_TIME=60
+      - MAX_MODEL_SIZE=1000000000 # 1GB in bytes
+    # Resource limits for hackathon constraints
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "2.0"
+        reservations:
+          memory: 512M
+          cpus: "1.0"
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import main; print('Health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    # Network isolation for offline operation
+    networks:
+      - hackathon-internal
+    # Restart policy
+    restart: unless-stopped
+    # Command with timing
+    command: >
+      sh -c "
+        echo '🏆 Adobe Hackathon Round 1B - Starting Document Intelligence' &&
+        echo '📊 System Info:' &&
+        python -c 'import psutil; print(f\"CPU cores: {psutil.cpu_count()}\"); print(f\"Memory: {round(psutil.virtual_memory().total/1024**3, 1)}GB\")' &&
+        echo '🚀 Starting analysis...' &&
+        time python main.py &&
+        echo '✅ Analysis complete! Check /app/output for results.'
+      "
+
+  # Optional: Simple web viewer for results (development only)
+  result-viewer:
+    image: python:3.9-slim
+    container_name: adobe-hackathon-viewer
+    profiles: ["dev"] # Only start with --profile dev
+    volumes:
+      - ./app/output:/app/output:ro
+    ports:
+      - "8080:8000"
+    working_dir: /app/output
+    command: python -m http.server 8000
+    depends_on:
+      - document-intelligence
+    networks:
+      - hackathon-internal
+
+# Named volumes for model caching
+volumes:
+  model-cache:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./models
+
+# Internal network for offline operation
+networks:
+  hackathon-internal:
+    driver: bridge
+    internal: true # No external internet access

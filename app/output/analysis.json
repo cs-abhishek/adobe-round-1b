@@ -1,20 +1,72 @@
 {
   "metadata": {
     "documents": [
+      "clinical_decision_support.txt",
+      "healthcare_ai_research.txt",
       "healthcare_tech_report.txt",
+      "imaging_technology_trends.txt",
+      "machine_learning_fundamentals.txt",
+      "medical_data_science.txt",
       "medical_imaging_toolkit.txt",
       "medical_ml_research.txt"
     ],
     "persona": "Data scientist working in healthcare research",
     "job": "Find machine learning techniques and methodologies for medical image analysis and diagnosis",
-    "timestamp": "2025-07-28T23:28:30.987038",
-    "total_documents": 3,
-    "total_sections": 3,
-    "total_subsections": 3
+    "timestamp": "2025-07-28T23:45:56.870418",
+    "total_documents": 8,
+    "total_sections": 8,
+    "total_subsections": 8,
+    "unique_documents_with_content": 8,
+    "avg_sections_per_document": 1.0,
+    "analysis_quality": {
+      "sections_found": true,
+      "subsections_found": true,
+      "multi_document_coverage": true,
+      "sufficient_content": true
+    },
+    "processing_metadata": {
+      "system": "Adobe Hackathon 2025 - Document Intelligence",
+      "version": "1.0.0",
+      "model_info": {
+        "primary": "TF-IDF + Sentence Transformers",
+        "sentence_model": "all-MiniLM-L6-v2",
+        "fallback": "Keyword similarity"
+      }
+    }
   },
   "extracted_sections": [
     {
+      "document": "clinical_decision_support.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "healthcare_ai_research.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
       "document": "healthcare_tech_report.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "imaging_technology_trends.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "machine_learning_fundamentals.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "medical_data_science.txt",
       "page": 1,
       "section_title": "Content from page 1",
       "importance_rank": 1
@@ -34,22 +86,136 @@
   ],
   "subsection_analysis": [
     {
+      "document": "clinical_decision_support.txt",
+      "page": 1,
+      "refined_text": "Machine Learning Integration Modern CDSS incorporate machine learning algorithms to analyze patient data and provide intelligent recommendations. Diagnostic Assistance AI-powered diagnostic tools can help identify diseases from symptoms, lab results, and medical imaging data. Treatment Recommendation Machine learning models can suggest optimal treatment plans based on patient characteristics and clinical evidence.",
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 51,
+        "character_count": 417,
+        "estimated_reading_time_seconds": 12.75
+      }
+    },
+    {
+      "document": "healthcare_ai_research.txt",
+      "page": 1,
+      "refined_text": "Artificial Intelligence in Healthcare Research Executive Summary AI technologies are transforming healthcare research through advanced data analysis and predictive modeling capabilities. Predictive Analytics Machine learning models can predict patient outcomes, disease progression, and treatment responses using historical data. Medical Image Analysis AI-powered image analysis helps detect diseases in radiology, pathology, and dermatology with superhuman accuracy in many cases.",
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 58,
+        "character_count": 481,
+        "estimated_reading_time_seconds": 14.5
+      }
+    },
+    {
       "document": "healthcare_tech_report.txt",
       "page": 1,
       "refined_text": "Artificial Intelligence in Healthcare AI technologies are transforming healthcare delivery through predictive analytics, diagnostic assistance, and personalized treatment recommendations. Machine Learning Applications Supervised learning algorithms are being used for disease prediction, while unsupervised learning helps in drug discovery and genomic analysis. Challenges and Opportunities Data privacy, regulatory compliance, and integration with existing systems remain key challenges for healthcare AI adoption.",
-      "importance_rank": 1
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 60,
+        "character_count": 515,
+        "estimated_reading_time_seconds": 15.0
+      }
+    },
+    {
+      "document": "imaging_technology_trends.txt",
+      "page": 1,
+      "refined_text": "AI-Enhanced Imaging Artificial intelligence enhances image acquisition, reconstruction, and analysis across all imaging modalities. Real-Time Analysis AI enables real-time image analysis during procedures, providing immediate feedback to healthcare providers. Automated Reporting Natural language generation creates automated radiology reports from image analysis results.",
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 42,
+        "character_count": 372,
+        "estimated_reading_time_seconds": 10.5
+      }
+    },
+    {
+      "document": "machine_learning_fundamentals.txt",
+      "page": 1,
+      "refined_text": "Machine Learning Fundamentals in Healthcare Introduction to Machine Learning Machine learning has revolutionized many industries, particularly healthcare. Common applications include image classification and diagnosis. Deep Learning Applications Deep learning has shown remarkable success in medical image analysis, drug discovery, and genomics research.",
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 42,
+        "character_count": 354,
+        "estimated_reading_time_seconds": 10.5
+      }
+    },
+    {
+      "document": "medical_data_science.txt",
+      "page": 1,
+      "refined_text": "Medical Data Science and Analytics Data-Driven Healthcare Healthcare is increasingly becoming data-driven, with electronic health records, wearable devices, and genomic data providing rich information. Big Data Analytics Big data techniques enable analysis of large-scale healthcare datasets to identify patterns and generate insights. Model Validation Rigorous validation methodologies ensure that medical AI models are safe, effective, and generalizable.",
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 57,
+        "character_count": 456,
+        "estimated_reading_time_seconds": 14.25
+      }
     },
     {
       "document": "medical_imaging_toolkit.txt",
       "page": 1,
       "refined_text": "Medical Image Processing Toolkit Documentation Overview This toolkit provides functions for processing and analyzing medical images using machine learning and computer vision techniques. Image Preprocessing Functions for noise reduction, contrast enhancement, and image normalization are essential for preparing medical images for analysis. API Reference Detailed documentation of all functions and classes with examples for medical image analysis workflows.",
-      "importance_rank": 1
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 58,
+        "character_count": 458,
+        "estimated_reading_time_seconds": 14.5
+      }
     },
     {
       "document": "medical_ml_research.txt",
       "page": 1,
       "refined_text": "Deep Learning Applications in Medical Image Analysis Abstract This paper explores the application of deep learning techniques in medical image analysis, particularly focusing on convolutional neural networks (CNNs) for diagnostic imaging. Introduction Medical imaging plays a crucial role in modern healthcare diagnosis and treatment planning. Conclusion Deep learning techniques show tremendous promise for medical image analysis applications.",
-      "importance_rank": 1
+      "importance_rank": 1,
+      "text_stats": {
+        "word_count": 57,
+        "character_count": 444,
+        "estimated_reading_time_seconds": 14.25
+      }
     }
-  ]
+  ],
+  "summary_statistics": {
+    "top_documents_by_relevance": [
+      {
+        "document": "clinical_decision_support.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "healthcare_ai_research.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "healthcare_tech_report.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "imaging_technology_trends.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "machine_learning_fundamentals.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "medical_data_science.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "medical_imaging_toolkit.txt",
+        "relevant_sections": 1
+      },
+      {
+        "document": "medical_ml_research.txt",
+        "relevant_sections": 1
+      }
+    ],
+    "content_distribution": {
+      "page_1": 8
+    },
+    "quality_indicators": {
+      "high_confidence_sections": 0,
+      "diverse_sources": 8,
+      "page_coverage": 8
+    }
+  }
 }

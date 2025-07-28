@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-07-28 23:36:00",
+  "system_info": {
+    "cpu_count": 4,
+    "memory_gb": 7.79,
+    "python_version": "3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)]"
+  },
+  "results": [
+    {
+      "scenario": "Standard Test (5 docs)",
+      "success": false,
+      "error": "'NoneType' object has no attribute 'get'",
+      "processing_time": 0.15427660942077637,
+      "memory_delta_mb": 0.37109375
+    },
+    {
+      "scenario": "Minimal Test (3 docs)",
+      "success": false,
+      "error": "'NoneType' object has no attribute 'get'",
+      "processing_time": 0.04584527015686035,
+      "memory_delta_mb": 0.0390625
+    }
+  ]
+}

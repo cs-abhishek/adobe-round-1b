@@ -1,26 +1,93 @@
 {
+  "system": {
+    "name": "Adobe Hackathon Document Intelligence",
+    "version": "1.0.0",
+    "competition": "Adobe Hackathon 2025 - Round 1B"
+  },
   "processing": {
     "max_documents": 10,
     "max_processing_time": 60,
     "segment_size": 200,
     "max_sections": 20,
-    "max_subsections": 15
+    "max_subsections": 15,
+    "parallel_processing": true,
+    "cache_results": true
   },
   "models": {
     "sentence_model": "all-MiniLM-L6-v2",
     "use_sentence_transformers": true,
-    "tfidf_max_features": 5000,
-    "tfidf_ngram_range": [1, 2]
+    "model_cache_dir": "models/",
+    "tfidf_config": {
+      "max_features": 5000,
+      "ngram_range": [1, 2],
+      "min_df": 1,
+      "max_df": 0.95
+    }
+  },
+  "scoring": {
+    "relevance_threshold": 0.1,
+    "confidence_threshold": 0.7,
+    "semantic_weight": 0.7,
+    "keyword_weight": 0.3,
+    "section_boost": 1.2,
+    "title_boost": 1.5
   },
   "output": {
     "include_metadata": true,
+    "include_confidence_scores": true,
+    "include_text_stats": true,
     "save_csv": false,
     "generate_summary": true,
-    "max_text_length": 500
+    "max_text_length": 500,
+    "pretty_print": true
   },
   "logging": {
     "level": "INFO",
     "file": "logs/document_intelligence.log",
-    "console": true
+    "console": true,
+    "performance_monitoring": true,
+    "detailed_timing": false
+  },
+  "performance": {
+    "target_time_seconds": 60,
+    "target_memory_mb": 1000,
+    "enable_monitoring": true,
+    "optimize_for_speed": true,
+    "early_stopping": true
+  },
+  "personas": {
+    "templates": {
+      "healthcare_data_scientist": {
+        "persona": "Data scientist working in healthcare research",
+        "job": "Find machine learning techniques and methodologies for medical image analysis and diagnosis"
+      },
+      "medical_researcher": {
+        "persona": "Medical researcher studying AI applications",
+        "job": "Identify computer vision approaches for radiology and diagnostic imaging"
+      },
+      "tech_consultant": {
+        "persona": "Healthcare technology consultant",
+        "job": "Research emerging AI trends and applications in medical practice"
+      },
+      "software_engineer": {
+        "persona": "Software engineer developing medical tools",
+        "job": "Find technical documentation and implementation details for medical image processing"
+      }
+    }
+  },
+  "hackathon": {
+    "constraints": {
+      "cpu_only": true,
+      "offline_only": true,
+      "max_model_size_mb": 1000,
+      "max_processing_time_seconds": 60,
+      "min_documents": 3,
+      "max_documents": 10
+    },
+    "validation": {
+      "check_constraints": true,
+      "log_violations": true,
+      "fail_on_violations": false
+    }
   }
 }

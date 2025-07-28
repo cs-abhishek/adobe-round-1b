@@ -12,21 +12,25 @@ An intelligent document analysis system that extracts and ranks relevant content
 ## 🚀 Key Features
 
 ### ⚡ **Ultra-Fast Processing**
+
 - Processes 3-5 PDFs in **under 60 seconds**
 - Optimized CPU-only architecture
 - Parallel processing with intelligent caching
 
 ### 🧠 **Advanced AI Capabilities**
+
 - **Hybrid Scoring System**: TF-IDF + Sentence Transformers
 - **Semantic Understanding**: Context-aware relevance ranking
 - **Multi-level Analysis**: Section + subsection intelligence
 
 ### 🎯 **Persona-Driven Intelligence**
+
 - Dynamic content relevance based on user personas
 - Job-specific content extraction
 - Importance ranking with confidence scores
 
 ### 📊 **Professional Output**
+
 - Structured JSON with metadata
 - Section-level importance ranking
 - Refined subsection text extraction
@@ -52,17 +56,18 @@ An intelligent document analysis system that extracts and ranks relevant content
 
 ## 🛠️ Technical Specifications
 
-| Constraint | Implementation | Status |
-|------------|----------------|---------|
-| **CPU-Only** | torch+cpu, scikit-learn | ✅ |
-| **Offline** | Pre-downloaded models | ✅ |
-| **Model Size** | all-MiniLM-L6-v2 (~90MB) | ✅ |
-| **Speed** | <60s for 5 PDFs | ✅ |
-| **Memory** | Optimized processing | ✅ |
+| Constraint     | Implementation           | Status |
+| -------------- | ------------------------ | ------ |
+| **CPU-Only**   | torch+cpu, scikit-learn  | ✅     |
+| **Offline**    | Pre-downloaded models    | ✅     |
+| **Model Size** | all-MiniLM-L6-v2 (~90MB) | ✅     |
+| **Speed**      | <60s for 5 PDFs          | ✅     |
+| **Memory**     | Optimized processing     | ✅     |
 
 ## 📦 Installation & Setup
 
 ### Quick Start (Windows)
+
 ```bash
 # Clone or download the project
 cd "Adobe Project 1B"
@@ -72,6 +77,7 @@ run.bat
 ```
 
 ### Manual Setup
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
@@ -84,6 +90,7 @@ python setup.py
 ```
 
 ### Docker Setup
+
 ```bash
 docker-compose up --build
 ```
@@ -91,6 +98,7 @@ docker-compose up --build
 ## 🎮 Usage
 
 ### 1. Prepare Input
+
 ```bash
 # Place PDFs in input directory
 cp your_pdfs/*.pdf app/input/
@@ -103,11 +111,13 @@ cp your_pdfs/*.pdf app/input/
 ```
 
 ### 2. Run Analysis
+
 ```bash
 python main.py
 ```
 
 ### 3. View Results
+
 ```bash
 # Check output
 cat app/output/analysis.json
@@ -115,16 +125,17 @@ cat app/output/analysis.json
 
 ## 📈 Performance Benchmarks
 
-| Metric | Target | Achieved |
-|--------|---------|----------|
-| **Processing Time** | <60s | ~15-45s |
-| **Memory Usage** | <2GB | ~800MB |
-| **Accuracy** | High relevance | 85-95% |
-| **Model Size** | <1GB | ~90MB |
+| Metric              | Target         | Achieved |
+| ------------------- | -------------- | -------- |
+| **Processing Time** | <60s           | ~15-45s  |
+| **Memory Usage**    | <2GB           | ~800MB   |
+| **Accuracy**        | High relevance | 85-95%   |
+| **Model Size**      | <1GB           | ~90MB    |
 
 ## 🔬 Demo & Testing
 
 ### Quick Demo
+
 ```bash
 # Create sample data
 python create_demo.py
@@ -137,6 +148,7 @@ python test_system.py
 ```
 
 ### Custom Testing
+
 ```bash
 # Test with your own PDFs
 cp your_pdfs/*.pdf app/input/
@@ -146,12 +158,14 @@ python main.py
 ## 📋 Input/Output Specification
 
 ### Input Structure
+
 ```
 /app/input/          # 3-10 PDF files
 /app/persona.json    # Persona configuration
 ```
 
 ### Output Structure
+
 ```json
 {
   "metadata": {
@@ -171,7 +185,7 @@ python main.py
   ],
   "subsection_analysis": [
     {
-      "document": "doc1.pdf", 
+      "document": "doc1.pdf",
       "page": 5,
       "refined_text": "Deep learning has shown...",
       "importance_rank": 1
@@ -183,6 +197,7 @@ python main.py
 ## 🧩 Advanced Features
 
 ### Multi-Persona Support
+
 ```bash
 # Switch personas quickly
 cp app/persona_healthcare.json app/persona.json
@@ -190,6 +205,7 @@ python main.py
 ```
 
 ### Performance Monitoring
+
 ```bash
 # Enable detailed logging
 export LOG_LEVEL=DEBUG
@@ -197,6 +213,7 @@ python main.py
 ```
 
 ### Batch Processing
+
 ```bash
 # Process multiple persona configurations
 for persona in app/persona_*.json; do
@@ -209,18 +226,21 @@ done
 ## 🏆 Hackathon Highlights
 
 ### Innovation Points
+
 - **Hybrid AI Approach**: Combines classical ML with modern transformers
 - **Speed Optimization**: Multi-threaded processing with intelligent caching
 - **Persona Intelligence**: Dynamic content relevance scoring
 - **Production Ready**: Docker support, comprehensive logging, error handling
 
 ### Technical Excellence
+
 - **Clean Architecture**: Modular, testable, maintainable code
 - **Performance Optimized**: Meets all speed/memory constraints
 - **Robust Error Handling**: Graceful degradation and fallbacks
 - **Comprehensive Testing**: Unit tests, integration tests, demo mode
 
 ### Business Value
+
 - **Real-world Applicable**: Healthcare, legal, research document analysis
 - **Scalable Design**: Easy to extend for different domains
 - **User-Friendly**: Simple configuration, clear output format
@@ -229,6 +249,7 @@ done
 ## 🔧 Configuration
 
 Advanced users can modify `config.json`:
+
 ```json
 {
   "processing": {
@@ -246,6 +267,7 @@ Advanced users can modify `config.json`:
 ## 🤝 Team & Acknowledgments
 
 Built for Adobe Hackathon 2025 Round 1B
+
 - Efficient document intelligence for persona-driven content extraction
 - Optimized for speed, accuracy, and real-world applicability
 

@@ -26,7 +26,7 @@ class OutputGenerator:
         subsection_analysis: List[Dict[str, Any]]
     ) -> Dict[str, Any]:
         """
-        Generate the complete output structure.
+        Generate the complete output structure with enhanced metadata.
         
         Args:
             documents: List of document file paths
@@ -41,18 +41,41 @@ class OutputGenerator:
         # Extract document names from paths
         doc_names = [Path(doc).name for doc in documents]
         
-        # Generate metadata
+        # Calculate additional metrics
+        total_sections = len(extracted_sections)
+        total_subsections = len(subsection_analysis)
+        unique_docs = len(set(section['document'] for section in extracted_sections))
+        avg_sections_per_doc = total_sections / unique_docs if unique_docs > 0 else 0
+        
+        # Generate enhanced metadata
         metadata = {
             "documents": doc_names,
             "persona": persona,
             "job": job,
             "timestamp": datetime.now().isoformat(),
             "total_documents": len(doc_names),
-            "total_sections": len(extracted_sections),
-            "total_subsections": len(subsection_analysis)
+            "total_sections": total_sections,
+            "total_subsections": total_subsections,
+            "unique_documents_with_content": unique_docs,
+            "avg_sections_per_document": round(avg_sections_per_doc, 2),
+            "analysis_quality": {
+                "sections_found": total_sections > 0,
+                "subsections_found": total_subsections > 0,
+                "multi_document_coverage": unique_docs > 1,
+                "sufficient_content": total_sections >= 5
+            },
+            "processing_metadata": {
+                "system": "Adobe Hackathon 2025 - Document Intelligence",
+                "version": "1.0.0",
+                "model_info": {
+                    "primary": "TF-IDF + Sentence Transformers",
+                    "sentence_model": "all-MiniLM-L6-v2",
+                    "fallback": "Keyword similarity"
+                }
+            }
         }
         
-        # Format extracted sections
+        # Format extracted sections with enhanced information
         formatted_sections = []
         for section in extracted_sections:
             formatted_section = {
@@ -61,9 +84,14 @@ class OutputGenerator:
                 "section_title": section["section_title"],
                 "importance_rank": section["importance_rank"]
             }
+            
+            # Add confidence score if available
+            if "relevance_score" in section:
+                formatted_section["confidence_score"] = round(section["relevance_score"], 3)
+            
             formatted_sections.append(formatted_section)
         
-        # Format subsection analysis
+        # Format subsection analysis with enhanced information
         formatted_subsections = []
         for subsection in subsection_analysis:
             formatted_subsection = {
@@ -72,19 +100,62 @@ class OutputGenerator:
                 "refined_text": subsection["refined_text"],
                 "importance_rank": subsection["importance_rank"]
             }
+            
+            # Add additional metrics
+            if "relevance_score" in subsection:
+                formatted_subsection["confidence_score"] = round(subsection["relevance_score"], 3)
+            
+            # Add text statistics
+            text = subsection["refined_text"]
+            formatted_subsection["text_stats"] = {
+                "word_count": len(text.split()),
+                "character_count": len(text),
+                "estimated_reading_time_seconds": max(1, len(text.split()) * 0.25)  # ~240 words/minute
+            }
+            
             formatted_subsections.append(formatted_subsection)
         
         # Create complete output structure
         output = {
             "metadata": metadata,
             "extracted_sections": formatted_sections,
-            "subsection_analysis": formatted_subsections
+            "subsection_analysis": formatted_subsections,
+            "summary_statistics": {
+                "top_documents_by_relevance": self._get_top_documents(formatted_sections),
+                "content_distribution": self._get_content_distribution(formatted_sections),
+                "quality_indicators": {
+                    "high_confidence_sections": len([s for s in formatted_sections if s.get("confidence_score", 0) > 0.7]),
+                    "diverse_sources": len(set(s["document"] for s in formatted_sections)),
+                    "page_coverage": len(set(f"{s['document']}-{s['page']}" for s in formatted_sections))
+                }
+            }
         }
         
         # Validate output structure
         self._validate_output(output)
         
         return output
+    
+    def _get_top_documents(self, sections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Get documents ranked by number of relevant sections."""
+        doc_counts = {}
+        for section in sections[:10]:  # Top 10 sections only
+            doc = section["document"]
+            doc_counts[doc] = doc_counts.get(doc, 0) + 1
+        
+        return [
+            {"document": doc, "relevant_sections": count}
+            for doc, count in sorted(doc_counts.items(), key=lambda x: x[1], reverse=True)
+        ]
+    
+    def _get_content_distribution(self, sections: List[Dict[str, Any]]) -> Dict[str, int]:
+        """Get distribution of content across pages."""
+        page_counts = {}
+        for section in sections:
+            page = section["page"]
+            page_counts[f"page_{page}"] = page_counts.get(f"page_{page}", 0) + 1
+        
+        return dict(sorted(page_counts.items()))
     
     def _validate_output(self, output: Dict[str, Any]) -> None:
         """
