@@ -1,0 +1,26 @@
+{
+  "processing": {
+    "max_documents": 10,
+    "max_processing_time": 60,
+    "segment_size": 200,
+    "max_sections": 20,
+    "max_subsections": 15
+  },
+  "models": {
+    "sentence_model": "all-MiniLM-L6-v2",
+    "use_sentence_transformers": true,
+    "tfidf_max_features": 5000,
+    "tfidf_ngram_range": [1, 2]
+  },
+  "output": {
+    "include_metadata": true,
+    "save_csv": false,
+    "generate_summary": true,
+    "max_text_length": 500
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/document_intelligence.log",
+    "console": true
+  }
+}

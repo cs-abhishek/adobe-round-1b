@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  document-intelligence:
+    build: .
+    volumes:
+      - ./app/input:/app/input
+      - ./app/output:/app/output
+      - ./app/persona.json:/app/persona.json
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python main.py

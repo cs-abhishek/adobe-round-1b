@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "documents": [
+      "healthcare_tech_report.txt",
+      "medical_imaging_toolkit.txt",
+      "medical_ml_research.txt"
+    ],
+    "persona": "Data scientist working in healthcare research",
+    "job": "Find machine learning techniques and methodologies for medical image analysis and diagnosis",
+    "timestamp": "2025-07-28T23:28:30.987038",
+    "total_documents": 3,
+    "total_sections": 3,
+    "total_subsections": 3
+  },
+  "extracted_sections": [
+    {
+      "document": "healthcare_tech_report.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "medical_imaging_toolkit.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    },
+    {
+      "document": "medical_ml_research.txt",
+      "page": 1,
+      "section_title": "Content from page 1",
+      "importance_rank": 1
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "healthcare_tech_report.txt",
+      "page": 1,
+      "refined_text": "Artificial Intelligence in Healthcare AI technologies are transforming healthcare delivery through predictive analytics, diagnostic assistance, and personalized treatment recommendations. Machine Learning Applications Supervised learning algorithms are being used for disease prediction, while unsupervised learning helps in drug discovery and genomic analysis. Challenges and Opportunities Data privacy, regulatory compliance, and integration with existing systems remain key challenges for healthcare AI adoption.",
+      "importance_rank": 1
+    },
+    {
+      "document": "medical_imaging_toolkit.txt",
+      "page": 1,
+      "refined_text": "Medical Image Processing Toolkit Documentation Overview This toolkit provides functions for processing and analyzing medical images using machine learning and computer vision techniques. Image Preprocessing Functions for noise reduction, contrast enhancement, and image normalization are essential for preparing medical images for analysis. API Reference Detailed documentation of all functions and classes with examples for medical image analysis workflows.",
+      "importance_rank": 1
+    },
+    {
+      "document": "medical_ml_research.txt",
+      "page": 1,
+      "refined_text": "Deep Learning Applications in Medical Image Analysis Abstract This paper explores the application of deep learning techniques in medical image analysis, particularly focusing on convolutional neural networks (CNNs) for diagnostic imaging. Introduction Medical imaging plays a crucial role in modern healthcare diagnosis and treatment planning. Conclusion Deep learning techniques show tremendous promise for medical image analysis applications.",
+      "importance_rank": 1
+    }
+  ]
+}
